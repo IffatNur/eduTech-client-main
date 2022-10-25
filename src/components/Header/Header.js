@@ -1,8 +1,11 @@
 import React from 'react';
+import { useContext } from 'react';
 import { FaErlang } from "react-icons/fa";
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../contexts/AuthProvider';
 
 const Header = () => {
+  const {user} = useContext(AuthContext);
     return (
       <div>
         <div className="navbar bg-base-100 bg-gradient-to-r from-blue-900 via-teal-500 to-blue-900">
@@ -35,9 +38,12 @@ const Header = () => {
                 <Link to="/register">REGISTER</Link>
               </li>
             </ul>
-            <div className="dropdown dropdown-end">
+            <div
+              className="dropdown dropdown-end tooltip tooltip-bottom"
+              data-tip={user.displayName}
+            >
               <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                <div className="w-10 rounded-full">
+                <div className="w-10 rounded-full ">
                   <img
                     src="https://i.pinimg.com/736x/9d/97/3e/9d973e10d026bd0359062439989b8eaf.jpg"
                     alt="avatar"
