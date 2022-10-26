@@ -3,12 +3,14 @@ import { useState } from 'react';
 import {createUserWithEmailAndPassword, getAuth, GithubAuthProvider, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile} from 'firebase/auth';
 import app from '../firebase/firebase.init';
 import { useEffect } from 'react';
+import './AuthContext.css';
 
 export const AuthContext = createContext();
 const auth = getAuth(app);
 const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [theme, setTheme] = useState('light');
 
     const googleProvider = new GoogleAuthProvider();
     const githubProvider = new GithubAuthProvider();
@@ -45,6 +47,10 @@ const AuthProvider = ({children}) => {
       return signInWithPopup(auth, githubProvider);
     }
 
+    const toggleTheme = () =>{
+      setTheme(currentTheme => currentTheme === 'light' ? 'dark' : 'light');
+    }
+
     useEffect(()=>{
       const unsubscribe = onAuthStateChanged(auth, currentUser =>{
         setUser(currentUser);
@@ -56,6 +62,8 @@ const AuthProvider = ({children}) => {
     const authInfo = {
       user,
       loading,
+      theme,
+      toggleTheme,
       createUser,
       signIn,
       logOut,
@@ -64,11 +72,11 @@ const AuthProvider = ({children}) => {
       githubSignIn,
     };
     return (
-      <div>
-        <AuthContext.Provider value={authInfo}>
+      <AuthContext.Provider value={authInfo}>
+          <div id={theme}>
             {children}
+          </div>
         </AuthContext.Provider>
-      </div>
     );
 };
 

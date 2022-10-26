@@ -1,11 +1,13 @@
 import React from 'react';
+import { useState } from 'react';
 import { useContext } from 'react';
-import { FaErlang, FaSnowman } from "react-icons/fa";
+import { FaErlang } from "react-icons/fa";
 import { Link } from 'react-router-dom';
+import ReactSwitch from 'react-switch';
 import { AuthContext } from '../../contexts/AuthProvider';
 
 const Header = () => {
-  const {user, logOut} = useContext(AuthContext);
+  const { user, logOut,theme, toggleTheme } = useContext(AuthContext);
   const handleLogout = ()=>{
     logOut()
     .then(()=>{})
@@ -13,7 +15,7 @@ const Header = () => {
   }
     return (
       <div>
-        <div className="navbar bg-base-100 bg-gradient-to-r from-blue-900 via-teal-500 to-blue-900">
+        <div className="home-header navbar bg-base-100 bg-gradient-to-r from-blue-900 via-teal-500 to-blue-900">
           <div className="flex-1">
             <h1 className="normal-case text-3xl font-bold text-cyan-200 flex items-center">
               <FaErlang></FaErlang> eduTech
@@ -32,17 +34,6 @@ const Header = () => {
               </li>
               <li className="hover:text-yellow-400">
                 <Link to="/blog">BLOG</Link>
-              </li>
-              <li className="hover:text-yellow-400">
-                <div className="form-control">
-                  <label className="label cursor-pointer">
-                    <input
-                      type="checkbox"
-                      className="toggle toggle-accent"
-                      checked
-                    />
-                  </label>
-                </div>
               </li>
               {user && user.uid ? (
                 <>
@@ -89,6 +80,10 @@ const Header = () => {
                   </li>
                 </>
               )}
+              <ReactSwitch
+                onChange={toggleTheme}
+                className="flex items-center justify-center mx-3 mt-3" checked={theme === 'light'}
+              ></ReactSwitch>
             </ul>
           </div>
         </div>

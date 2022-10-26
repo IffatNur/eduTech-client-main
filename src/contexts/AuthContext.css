@@ -1,0 +1,12 @@
+#light{
+    background-color: rgb(217, 227, 250);
+}
+#dark{
+    background-color: rgba(0, 0, 0, 0.783);
+}
+#dark .home-header ul{
+    color: rgb(248, 211, 2);
+}
+#dark .home-header h1{
+    color: rgb(248, 211, 2);
+}
