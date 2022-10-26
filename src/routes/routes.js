@@ -8,6 +8,7 @@ import Home from "../components/Home/Home";
 import Login from "../components/Login/Login";
 import Register from "../components/Register/Register";
 import Main from "../layout/Main";
+import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
   {
@@ -31,22 +32,24 @@ export const router = createBrowserRouter([
           fetch(`https://edutech-server.vercel.app/courses/${params.id}`),
       },
       {
-        path: "/courses/:id",
-        element: <CheckOut></CheckOut>,
-        loader: ({ params }) =>
-          fetch(`https://edutech-server.vercel.app/courses/${params.id}`),
+        path: "/checkout",
+        element: (
+          <PrivateRoute>
+            <CheckOut></CheckOut>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/login",
-        element: <Login></Login>
+        element: <Login></Login>,
       },
       {
         path: "/register",
-        element: <Register></Register>
+        element: <Register></Register>,
       },
       {
         path: "/blog",
-        element: <Blog></Blog>
+        element: <Blog></Blog>,
       },
     ],
   },
