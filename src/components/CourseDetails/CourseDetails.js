@@ -1,6 +1,6 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
-import { FaStar, FaStarHalfAlt } from "react-icons/fa";
+import { Link, useLoaderData } from 'react-router-dom';
+import { FaStar, FaStarHalfAlt, FaFileDownload } from "react-icons/fa";
 
 const CourseDetails = () => {
     const singleCourse = useLoaderData();
@@ -8,7 +8,12 @@ const CourseDetails = () => {
     console.log(singleCourse);
     return (
       <div>
-        <div className="card lg:card-side bg-base-100 shadow-xl lg:w-3/4 mx-auto mt-24 bg-sky-200">
+        <div className="navbar bg-primary text-white">
+          <div className="flex-1">
+            <Link className="btn btn-ghost normal-case text-xl">Download File <FaFileDownload className='text-error'></FaFileDownload></Link>
+          </div>
+        </div>
+        <div className="card lg:card-side shadow-xl lg:w-3/4 mx-auto mt-24 bg-sky-200">
           <figure className="w-full">
             <img className="h-full" src={img} alt="Album" />
           </figure>

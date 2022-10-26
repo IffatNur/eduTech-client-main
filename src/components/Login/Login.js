@@ -1,13 +1,46 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { FaGithub, FaGoogle } from 'react-icons/fa';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../contexts/AuthProvider';
 
 const Login = () => {
+  const {signIn, googleSignIn, githubSignIn} = useContext(AuthContext);
+  const navigate = useNavigate();
     const handleSubmit = (event)=>{
         event.preventDefault();
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
         console.log(email,password);
+
+        signIn(email, password)
+        .then(result=>{
+          const user = result.user;
+          form.reset();
+          navigate('/');
+          console.log(user);
+        })
+        .catch(error=>console.log(error));
+    }
+    const handleGooglesignin = () =>{
+      googleSignIn()
+        .then((result) => {
+          const user = result.user;
+          navigate("/");
+          console.log(user);
+        })
+        .catch((error) => console.log(error));
+    }
+
+    const handleGithubsignin = () =>{
+      githubSignIn()
+        .then((result) => {
+          const user = result.user;
+          navigate("/");
+          console.log(user);
+        })
+        .catch((error) => console.log(error));
     }
     return (
       <div>
@@ -56,7 +89,16 @@ const Login = () => {
                     </Link>
                   </label>
                 </div>
-                <div type="submit" className="form-control mt-6">
+                <div className="flex justify-start">
+                  <small className="mr-2">Signin with </small>
+                  <button onClick={handleGooglesignin}>
+                    <FaGoogle className="mr-3"></FaGoogle>
+                  </button>
+                  <button onClick={handleGithubsignin}>
+                    <FaGithub></FaGithub>
+                  </button>
+                </div>
+                <div type="submit" className="form-control mt-1">
                   <button className="btn btn-primary">Login</button>
                 </div>
               </div>
