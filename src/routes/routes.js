@@ -32,7 +32,9 @@ export const router = createBrowserRouter([
           fetch(`https://edutech-server.vercel.app/courses/${params.id}`),
       },
       {
-        path: "/checkout",
+        path: "/checkout/:id",
+        loader: ({ params }) =>
+          fetch(`https://edutech-server.vercel.app/checkout/${params.id}`),
         element: (
           <PrivateRoute>
             <CheckOut></CheckOut>

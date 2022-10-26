@@ -56,7 +56,7 @@ const CourseDetails = () => {
                 <FaStar></FaStar>
                 <FaStarHalfAlt></FaStarHalfAlt>
               </span>
-              <Link to="/checkout">
+              <Link to={`/checkout/${id}`}>
                 <button className="btn btn-primary">Get Premium Access</button>
               </Link>
             </div>
@@ -66,4 +66,4 @@ const CourseDetails = () => {
     );
 };
 
-export default CourseDetails;
+export default CourseDetails ;
