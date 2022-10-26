@@ -34,7 +34,15 @@ const Header = () => {
                 <Link to="/blog">BLOG</Link>
               </li>
               <li className="hover:text-yellow-400">
-                <Link to="/toggle">TOGGLE</Link>
+                <div className="form-control">
+                  <label className="label cursor-pointer">
+                    <input
+                      type="checkbox"
+                      className="toggle toggle-accent"
+                      checked
+                    />
+                  </label>
+                </div>
               </li>
               {user && user.uid ? (
                 <>

@@ -1,10 +1,12 @@
 import React from 'react';
+import { useState } from 'react';
 import { useContext } from 'react';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 
 const Login = () => {
+  const [error, setError] = useState('');
   const {signIn, googleSignIn, githubSignIn} = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
@@ -24,7 +26,11 @@ const Login = () => {
           navigate(from, {replace:true});
           console.log(user);
         })
-        .catch(error=>console.log(error));
+        .catch(error=>{
+          console.log(error.message);
+          const message = error.message;
+          setError(message);
+        });
     }
     const handleGooglesignin = () =>{
       googleSignIn()
@@ -91,6 +97,9 @@ const Login = () => {
                       Don't have an account?
                     </Link>
                   </label>
+                  <small className="text-red-600">
+                    <b>{error}</b>
+                  </small>
                 </div>
                 <div className="flex justify-start">
                   <small className="mr-2">Signin with </small>
