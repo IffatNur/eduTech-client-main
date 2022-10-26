@@ -68,3 +68,29 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+### Website details
+
+Website name: eduTech
+Live link:
+
+Website features and functionality: 
+
+* View available courses
+* BY clicking on view details user can check details of a particular course
+* There is also a sidebar to check a particular course details
+* The premium access feature is a protected route, to get premium access user needs to be logged in
+* Signin/Register and Logout options are available for users
+* User can change theme by toggle button on navbar
+
+## Libraries: 
+React
+
+## Frameworks:
+
+JS framework- router-dom
+CSS framework- Tailwind
+Tailwind CSS component library- DaisyUI
+
+
