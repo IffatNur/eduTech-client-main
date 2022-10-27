@@ -86,9 +86,9 @@ Website features and functionality:
 
 ## Technologies used: 
 
-React
-CSS framework- Tailwind
-Tailwind CSS component library- DaisyUI
-Firebase
+React,
+CSS framework- Tailwind,
+Tailwind CSS component library- DaisyUI,
+Firebase.
 
 
