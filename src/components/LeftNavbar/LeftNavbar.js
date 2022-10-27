@@ -2,7 +2,6 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 const LeftNavbar = ({crs}) => {
-    console.log(crs);
     return (
       <div>
         <NavLink to={`${crs.id}`}>

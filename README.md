@@ -73,7 +73,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 ### Website details
 
 Website name: eduTech
-Live link:
+Live link: https://edutech-client.web.app/
 
 Website features and functionality: 
 
@@ -84,13 +84,11 @@ Website features and functionality:
 * Signin/Register and Logout options are available for users
 * User can change theme by toggle button on navbar
 
-## Libraries: 
+## Technologies used: 
+
 React
-
-## Frameworks:
-
-JS framework- router-dom
 CSS framework- Tailwind
 Tailwind CSS component library- DaisyUI
+Firebase
 
 
